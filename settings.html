@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Settings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            width: 300px;
+            padding: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="number"] {
+            width: 100%;
+        }
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Extension Settings</h1>
+    <label>
+        Activity Timeout (seconds):
+        <input type="number" id="activityTimeout" />
+    </label>
+    <label>
+        Data Send Interval (seconds):
+        <input type="number" id="sendInterval" />
+    </label>
+    <button id="saveSettings">Save Settings</button>
+    <script src="settings.js"></script>
+</body>
+</html>
