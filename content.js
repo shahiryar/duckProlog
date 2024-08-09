@@ -19,6 +19,8 @@
     let networkType = navigator.connection.effectiveType || 'unknown';
     let cookies = document.cookie;
     let headings = [];
+    let selectedText = [];
+    let typedText = [];
 
     function getHeadings() {
         const headingTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
@@ -28,6 +30,16 @@
                 text: element.innerText
             }))
         );
+    }
+
+    function getSelectedText() {
+        const selection = window.getSelection();
+        if (selection.toString().trim()) {
+            selectedText.push({
+                text: selection.toString(),
+                timestamp: new Date().toISOString()
+            });
+        }
     }
 
     function startTimer() {
@@ -45,6 +57,7 @@
 
     function logAndSendData() {
         getHeadings(); // Collect headings before logging data
+        getSelectedText(); // Collect selected text
         const metadata = {
             title: document.title,
             description: document.querySelector('meta[name="description"]')?.getAttribute('content') || 'No description',
@@ -65,6 +78,8 @@
             idleTime: Math.max(0, Date.now() - idleStart) / 1000, // idle time in seconds
             focusDuration: Math.max(0, Date.now() - focusStart) / 1000, // focus duration in seconds
             headings, // Include headings
+            selectedText, // Include selected text
+            typedText, // Include typed text
             timestamp: new Date().toISOString()
         };
         chrome.runtime.sendMessage(metadata);
@@ -82,9 +97,15 @@
         clickCount += 1;
     });
 
-    document.addEventListener('keypress', () => {
+    document.addEventListener('keypress', (event) => {
         keyPressCount += 1;
+        typedText.push({
+            text: event.key,
+            timestamp: new Date().toISOString()
+        });
     });
+
+    document.addEventListener('mouseup', getSelectedText);
 
     window.addEventListener('focus', () => {
         lastActivity = Date.now();
