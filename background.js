@@ -45,7 +45,7 @@ function extract_schema(message) {
         url: message.url || SCHEMA.url,
         referer: message.referrer || SCHEMA.referer,
         contentHeadings: JSON.stringify(message.headings) || SCHEMA.contentHeadings,
-        selectedText: JSON.strinfy(message.selectedText) || SCHEMA.selectedText,
+        selectedText: JSON.stringify(message.selectedText) || SCHEMA.selectedText,
         typedKeys: JSON.stringify(getTypedTextAsString(message.typedText)) || SCHEMA.typedKeys,
         visitTimestamp: message.visitTimestamp || SCHEMA.visitTimestamp,
         clickCount: message.clickCount || SCHEMA.clickCount,
