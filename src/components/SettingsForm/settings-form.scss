@@ -1,0 +1,102 @@
+@use "src/base" as *;
+
+.settings-form-wrapper {
+    position: fixed;
+    right: 50px;
+    bottom: 130px;
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: 0px;
+    border-radius: 10px;
+    border: 2px solid $primary-light;
+    background-color: white;
+    z-index: 1000000000;
+    overflow: hidden;
+    transition: height 0.8s ease-in-out;
+
+    &-form {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        gap: 20px;
+
+        &-btn-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+
+            &-btn {
+                width: 100%;
+                max-width: 250px;
+                padding: 10px;
+                border-radius: 10px;
+                color: white;
+                font-size: 16px;
+                font-weight: 500;
+                background-color: $primary;
+                border: none;
+                cursor: pointer;
+            }
+        }
+
+        &-input-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            &-label {
+                color: $primary-dark;
+                font-size: 18px;
+                font-weight: 500;
+            }
+
+            &-input {
+                width: 100%;
+                padding: 5px;
+                border: 1px solid $primary-dark;
+                border-radius: 5px;
+                font-size: 16px;
+                color: $primary-dark;
+                
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+    }
+
+    &-header-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        background-color: $primary;
+        padding: 10px;
+
+        &-text-wrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        &-text {
+            font-size: 16px;
+            color: white;
+            font-weight: bold;
+        }
+
+        &-close-btn {
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    }
+}

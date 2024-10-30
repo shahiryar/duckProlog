@@ -1,10 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "Duck Prolog",
+  "name": "Duck Prolog React",
   "version": "1.0",
   "permissions": ["storage", "history", "tabs", "webNavigation", "activeTab"],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.ts"
   },
   "icons": {
     "16": "public/icon16.png",
@@ -16,13 +16,12 @@
       "16": "public/icon16.png",
       "48": "public/icon48.png",
       "128": "public/icon128.png"
-    },
-    "default_popup": "settings.html"
+    }
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content.js"]
+      "js": ["src/main.tsx"]
     }
   ]
 }
